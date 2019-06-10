@@ -68,7 +68,7 @@ class LinkedList:
         current = self.head
         # loop so long as `current` is a valid Node
         while current:
-            if currrent.get_value() == target:
+            if current.get_value() == target:
                 return True
             # update the current to refer to current's next node
             current = current.get_next()
