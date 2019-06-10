@@ -12,8 +12,8 @@ class Node:
     def set_next(self, new_next):
         self.next_node = new_next
 
-    def set_value(self, value): ZZ
-    self.value = value
+    def set_value(self, value):
+        self.value = value
 
 
 class LinkedList:
