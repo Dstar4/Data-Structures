@@ -7,11 +7,11 @@ class Queue:
 
     # adds item to the back of the que
     def enqueue(self, item):
-
-        # remove and return an item from the front of the que
-
-    def dequeue(self):
         pass
+
+    # remove and return an item from the front of the que
+    def dequeue(self):
+        self.storage = self.storage.pop(0)
 
     # returns the number of items in the que
     def len(self):
