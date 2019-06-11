@@ -1,18 +1,26 @@
+
+from linked_list import LinkedList
+
+
 class Queue:
     def __init__(self):
         self.size = 0
         # what data structure should we
         # use to store queue elements?
-        self.storage = []
+        self.storage = LinkedList()
 
-    # adds item to the back of the que
+    # add item to the back of the queue
     def enqueue(self, item):
+        self.storage.add_to_tail(item)
+        self.size += 1
 
-        # remove and return an item from the front of the que
-
+    # remove and return an item from the front of the queue
     def dequeue(self):
-        pass
+        if self.size == 0:
+            return None
+        else:
+            self.size -= 1
+            return self.storage.remove_head()
 
-    # returns the number of items in the que
     def len(self):
-        pass
+        return self.size
