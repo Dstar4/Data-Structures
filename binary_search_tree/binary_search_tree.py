@@ -55,6 +55,15 @@ class BinarySearchTree:
         return self.value
 
     # performs a traversal of every node, executing the cb on every tree node value
-
     def for_each(self, cb):
-        pass
+        # use recursion to make this easy
+        # invoke the callback on every node
+        cb(self.value)
+        # check if there is a left
+        if self.left:
+            # if so call for_each with the callback on the left nodes
+            self.left.for_each(cb)
+        # check if there is a right
+        if self.right:
+            # if so call for_each with the callback on the right nodes
+            self.right.for_each(cb)
