@@ -44,8 +44,17 @@ class BinarySearchTree:
         # returns the maximum value in the binary search tree
 
     def get_max(self):
-        pass
+        # traverse down the right side of the tree until self.right is None with a while loop
+        while True:
+            if self.right is not None:
+                self = self.right
+
+            # Once self.right is None return the current nodes value
+            else:
+                break
+        return self.value
 
     # performs a traversal of every node, executing the cb on every tree node value
+
     def for_each(self, cb):
         pass
