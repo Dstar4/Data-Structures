@@ -35,7 +35,7 @@ class BinarySearchTree:
 
             #  if target is > self.value and a right node exists
             elif target > self.value and self.right:
-                # set self to the new node down the tree
+                # set self to the new node down the treeiO(O)
                 self = self.right
 
             # if no match is found return False
@@ -59,10 +59,12 @@ class BinarySearchTree:
         # use recursion to make this easy
         # invoke the callback on every node
         cb(self.value)
+
         # check if there is a left
         if self.left:
             # if so call for_each with the callback on the left nodes
             self.left.for_each(cb)
+
         # check if there is a right
         if self.right:
             # if so call for_each with the callback on the right nodes
