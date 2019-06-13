@@ -28,6 +28,9 @@ DELETION
 3. Remove the last element from the array(because we don't want multiple copies)
 4. Sift down the element at index 0
 
+Left Child: 2 * index + 1
+Right Child 2 * index + 2
+Parent: (index -1) // 2
 -------------------------------------------------------------------------------
 """
 
@@ -37,7 +40,6 @@ class Heap:
         self.storage = []
 
     def insert(self, value):
-        pass
 
     def delete(self):
         pass

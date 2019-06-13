@@ -12,22 +12,31 @@ O(n)
 
 1. What is the runtime complexity of `insert`?
 
+The runtime of insert will depend on the height of the tree
+In the worst case it could be O(n) but in general it will be O(h) where h is the height of the tree.
+
 2. What is the runtime complexity of `contains`?
 
+The runtime for contains will be similar to insert, because they will have to traverse the tree in a similar manner.
+O(n) worst case
+O(h) average case
+
 3. What is the runtime complexity of `get_max`?
+O(h) where h is the height of the tree.
+
 
 ## Heap
 
 1. What is the runtime complexity of `_bubble_up`?
-
+O(log n)
 2. What is the runtime complexity of `_sift_down`?
-
+O(log n)
 3. What is the runtime complexity of `insert`?
-
+O(log n)
 4. What is the runtime complexity of `delete`?
-
+O(log n)
 5. What is the runtime complexity of `get_max`?
-
+O(1)
 ## Doubly Linked List
 
 1. What is the runtime complexity of `ListNode.insert_after`?
