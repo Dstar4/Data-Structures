@@ -12,14 +12,18 @@ class Heap:
     # removes and returns the topmost value from the heap
     # ensure the heap property is maintained after the topmost element has been removed
     def delete(self):
-        pass
+        self.storage[0], self.storage[len(
+            self.storage) - 1] = self.storage[len(self.storage) - 1], self.storage[0]
+        value_to_return = self.storage.pop()
+        self._sift_down(0)
+        return value_to_return
 
-    def get_priority(self):
-        pass
+    def get_max(self):
+        return self.storage[0]
 
     # returns the number of elements stored in the heap
     def get_size(self):
-        pass
+        return len(self.storage)
 
     """moves the element at the specified index up the heap
     by swapping it with its parent if the value is less than
@@ -43,9 +47,49 @@ class Heap:
                 # stop bubbling up
                 break
 
-    """grabs the indices of this elements children and determines which
+    """
+    Grabs the indices of this elements children and determines which
     child has a larger value. If the larger child's value is larger than
-    the parents value, the child element is swapped with the parent."""
+    the parents value, the child element is swapped with the parent.
+
+    Left Child: 2 * index + 1
+    Right Child 2 * index + 2
+    Parent: (index -1) // 2
+    """
 
     def _sift_down(self, index):
-        pass
+        # check for a left child node
+        if (self.get_size() - 1) >= ((2 * index) + 1):
+            # if left > index
+            if self.storage[(2 * index) + 1] > self.storage[index]:
+
+                # check for a right child node
+                if (self.get_size() - 1) >= ((2 * index) + 2):
+                    # check if the right node > the left node
+                    if self.storage[(2 * index) + 2] > self.storage[(2 * index) + 1]:
+                        # if the right > the left swap the right with the index
+                        self.storage[(
+                            2 * index) + 2], self.storage[index] = self.storage[index], self.storage[(2 * index) + 2]
+                        self._sift_down((2 * index) + 2)
+                    else:
+                        # if the left > the right swap the right with the index
+                        self.storage[(
+                            2 * index) + 1], self.storage[index] = self.storage[index], self.storage[(2 * index) + 1]
+                        # sift to reset the tree
+                        self._sift_down((2 * index) + 1)
+                else:
+                    # The left node is > right node
+                    self.storage[(
+                        2 * index) + 1], self.storage[index] = self.storage[index], self.storage[(2 * index) + 1]
+                    # sift to reset the tree
+                    self._sift_down((2 * index) + 1)
+            else:
+                # check for a right child node
+                if (self.get_size() - 1) >= ((2 * index) + 2):
+                    # check if the right node < the current node
+                    if self.storage[(2 * index) + 2] > self.storage[index]:
+                        # if the right > the left swap the right with the index
+                        self.storage[(
+                            2 * index) + 2], self.storage[index] = self.storage[index], self.storage[(2 * index) + 2]
+                        # sift to reset the tree
+                        self._sift_down((2 * index) + 2)
