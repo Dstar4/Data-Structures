@@ -52,25 +52,77 @@ class DoublyLinkedList:
         return self.length
 
     def add_to_head(self, value):
-        pass
+        if not self.head:
+            self.head = ListNode(value)
+            self.tail = self.head
+        else:
+            self.head.insert_before(value)
+            self.head = self.head.prev
+        self.length += 1
 
     def remove_from_head(self):
-        pass
+        tmp = 0
+        if self.length > 0:
+            tmp = self.head.value
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
+        else:
+            self.head.delete()
+
+        self.length -= 1
+        return tmp
 
     def add_to_tail(self, value):
-        pass
+        if not self.tail:
+            self.tail = ListNode(value)
+            self.head = self.tail
+        else:
+            self.tail.insert_after(value)
+            self.tail = self.tail.next
+        self.length += 1
 
     def remove_from_tail(self):
-        pass
+        tmp = 0
+        if self.length > 0:
+            tmp = self.tail.value
+            if self.tail == self.head:
+                self.head = None
+                self.tail = None
+        else:
+            self.tail.delete()
+
+        self.length -= 1
+        return tmp
 
     def move_to_front(self, node):
-        pass
+        if self.head != node:
+            node.delete()
+        self.head.insert_before(node.value)
+        self.head = self.head.prev
 
     def move_to_end(self, node):
-        pass
+        if self.length > 1 and node != self.tail:
+            current_node = node
+            node.delete()
+        self.tail.insert_after(current_node.value)
+        self.tail = self.tail.next
+        self.head = self.head if node != self.head else current_node.next
 
     def delete(self, node):
-        pass
+        if self.head == node:
+            self.head = node.next
+        if self.tail == node:
+            self.tail = node.prev
+        if self.length > 0:
+            node.delete()
+            self.length -= 1
 
     def get_max(self):
-        pass
+        tmp = self.head
+        max_value = tmp.value
+        while tmp != self.tail:
+            tmp = tmp.next
+            if max_value < tmp.value:
+                max_value = tmp.value
+        return max_value
